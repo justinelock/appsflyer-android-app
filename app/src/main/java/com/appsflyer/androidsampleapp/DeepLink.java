@@ -2,9 +2,10 @@ package com.appsflyer.androidsampleapp;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.appsflyer.AppsFlyerConversionListener;
 import com.appsflyer.AppsFlyerLib;
@@ -12,9 +13,11 @@ import com.appsflyer.AppsFlyerLibCore;
 
 import java.util.Map;
 
-  /** Test this deep link with the link : https://androidsampleapp.onelink.me/Pvqj */
-  /** run: $ adb shell am start -a android.intent.action.VIEW -d https://androidsampleapp.onelink.me/Pvqj */
+/**
+ * Test this deep link with the link : https://androidsampleapp.onelink.me/Pvqj
+ */
 
+/** run: $ adb shell am start -a android.intent.action.VIEW -d https://androidsampleapp.onelink.me/Pvqj */
 
 
 public class DeepLink extends AppCompatActivity {
@@ -73,7 +76,7 @@ public class DeepLink extends AppCompatActivity {
 
     /* Used to display the deep link data returned from onAppOpenAttribution */
 
-    public void setAttributionText(final String data){
+    public void setAttributionText(final String data) {
 
         handler.postDelayed(new Runnable() {
             @Override
@@ -81,7 +84,7 @@ public class DeepLink extends AppCompatActivity {
                 TextView attributionTextView = findViewById(R.id.attributionText);
                 attributionTextView.setText(data);
             }
-        } , 2500);
+        }, 2500);
     }
 
 }

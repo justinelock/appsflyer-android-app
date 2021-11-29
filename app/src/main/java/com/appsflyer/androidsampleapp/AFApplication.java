@@ -16,7 +16,6 @@ import java.util.Map;
  *********************************************************************/
 
 
-
 public class AFApplication extends Application {
 
 
@@ -24,7 +23,7 @@ public class AFApplication extends Application {
 
 
     @Override
-    public void onCreate(){
+    public void onCreate() {
         super.onCreate();
 
         /**  Set Up Conversion Listener to get attribution data **/
@@ -62,7 +61,7 @@ public class AFApplication extends Application {
 
         /* This API enables AppsFlyer to detect installations, sessions, and updates. */
 
-        AppsFlyerLib.getInstance().init(AF_DEV_KEY , conversionListener , getApplicationContext());
+        AppsFlyerLib.getInstance().init(AF_DEV_KEY, conversionListener, getApplicationContext());
         AppsFlyerLib.getInstance().startTracking(this);
 
 
@@ -73,12 +72,12 @@ public class AFApplication extends Application {
     }
 
 
-
     /* IGNORE - USED TO DISPLAY INSTALL DATA */
-    public static String InstallConversionData =  "";
+    public static String InstallConversionData = "";
     public static int sessionCount = 0;
-    public static void setInstallData(Map<String, Object> conversionData){
-        if(sessionCount == 0){
+
+    public static void setInstallData(Map<String, Object> conversionData) {
+        if (sessionCount == 0) {
             final String install_type = "Install Type: " + conversionData.get("af_status") + "\n";
             final String media_source = "Media Source: " + conversionData.get("media_source") + "\n";
             final String install_time = "Install Time(GMT): " + conversionData.get("install_time") + "\n";

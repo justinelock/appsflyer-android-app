@@ -2,10 +2,11 @@ package com.appsflyer.androidsampleapp;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.appsflyer.AFInAppEventParameterName;
 import com.appsflyer.AFInAppEventType;
@@ -13,7 +14,6 @@ import com.appsflyer.AppsFlyerLib;
 
 import java.util.HashMap;
 import java.util.Map;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,16 +43,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     /*** Ignore - used to display install data ***/
-    public void SetInstallDataText(){
+    public void SetInstallDataText() {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 TextView installData = findViewById(R.id.installDataText);
                 installData.setText(AFApplication.InstallConversionData);
             }
-        } , 5000);
+        }, 5000);
 
     }
 
