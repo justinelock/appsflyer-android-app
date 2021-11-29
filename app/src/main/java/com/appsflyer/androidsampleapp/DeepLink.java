@@ -1,5 +1,6 @@
 package com.appsflyer.androidsampleapp;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -9,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.appsflyer.AppsFlyerConversionListener;
 import com.appsflyer.AppsFlyerLib;
-import com.appsflyer.AppsFlyerLibCore;
 
 import java.util.Map;
 
@@ -17,7 +17,9 @@ import java.util.Map;
  * Test this deep link with the link : https://androidsampleapp.onelink.me/Pvqj
  */
 
-/** run: $ adb shell am start -a android.intent.action.VIEW -d https://androidsampleapp.onelink.me/Pvqj */
+/**
+ * run: $ adb shell am start -a android.intent.action.VIEW -d https://androidsampleapp.onelink.me/Pvqj
+ */
 
 
 public class DeepLink extends AppCompatActivity {
@@ -25,6 +27,7 @@ public class DeepLink extends AppCompatActivity {
 
     final Handler handler = new Handler();
 
+    @SuppressLint("LongLogTag")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +36,8 @@ public class DeepLink extends AppCompatActivity {
 
         /* Add this call to the tracker on each deep linked activity */
 
-        AppsFlyerLib.getInstance().sendDeepLinkData(this);
+        //AppsFlyerLib.getInstance().sendDeepLinkData(this);
+        AppsFlyerLib.getInstance().sendPushNotificationData(this);
 
 
         AppsFlyerLib.getInstance().registerConversionListener(this, new AppsFlyerConversionListener() {
@@ -42,13 +46,13 @@ public class DeepLink extends AppCompatActivity {
             @Override
             public void onConversionDataSuccess(Map<String, Object> conversionData) {
                 for (String attrName : conversionData.keySet()) {
-                    Log.d(AppsFlyerLibCore.LOG_TAG, "attribute: " + attrName + " = " + conversionData.get(attrName));
+                    Log.d("AppsFlyerLibCore.LOG_TAG", "attribute: " + attrName + " = " + conversionData.get(attrName));
                 }
             }
 
             @Override
             public void onConversionDataFail(String errorMessage) {
-                Log.d(AppsFlyerLibCore.LOG_TAG, "error onInstallConversionFailure : " + errorMessage);
+                Log.d("AppsFlyerLibCore.LOG_TAG", "error onInstallConversionFailure : " + errorMessage);
             }
 
 
@@ -57,7 +61,7 @@ public class DeepLink extends AppCompatActivity {
             public void onAppOpenAttribution(Map<String, String> conversionData) {
                 String attributionDataText = "Attribution Data: \n";
                 for (String attrName : conversionData.keySet()) {
-                    Log.d(AppsFlyerLibCore.LOG_TAG, "attribute: " + attrName + " = " +
+                    Log.d("AppsFlyerLibCore.LOG_TAG", "attribute: " + attrName + " = " +
                             conversionData.get(attrName));
                     attributionDataText += conversionData.get(attrName) + "\n";
 
@@ -67,7 +71,7 @@ public class DeepLink extends AppCompatActivity {
 
             @Override
             public void onAttributionFailure(String errorMessage) {
-                Log.d(AppsFlyerLibCore.LOG_TAG, "error onAttributionFailure : " + errorMessage);
+                Log.d("AppsFlyerLibCore.LOG_TAG", "error onAttributionFailure : " + errorMessage);
             }
         });
 

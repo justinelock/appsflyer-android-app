@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 eventValue.put(AFInAppEventParameterName.CONTENT_TYPE, "category_a");
                 eventValue.put(AFInAppEventParameterName.CONTENT_ID, "1234567");
                 eventValue.put(AFInAppEventParameterName.CURRENCY, "USD");
-                AppsFlyerLib.getInstance().trackEvent(getApplicationContext(), AFInAppEventType.PURCHASE, eventValue);
+                AppsFlyerLib.getInstance().logEvent(getApplicationContext(), AFInAppEventType.PURCHASE, eventValue);
             }
         });
     }
