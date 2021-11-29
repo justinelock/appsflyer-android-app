@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.appsflyer.androidsampleapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -16,7 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,22 +30,25 @@
         <receiver
             android:name="com.appsflyer.SingleInstallBroadcastReceiver"
             android:exported="true">
-                
             <intent-filter>
-                         
                 <action android:name="com.android.vending.INSTALL_REFERRER" />
-                     
             </intent-filter>
         </receiver>
 
-        <activity android:name=".DeepLink">
-            <intent-filter  android:autoVerify="true">
+        <activity
+            android:name=".DeepLink"
+            android:exported="false"
+            tools:ignore="AppLinkUrlError">
+            <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="https"
+
+                <data
                     android:host="androidsampleapp.onelink.me"
-                    android:pathPrefix="/Pvqj" />
+                    android:pathPrefix="/Pvqj"
+                    android:scheme="https" />
             </intent-filter>
 
         </activity>
